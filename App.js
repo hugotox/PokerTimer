@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
   SafeAreaView,
-  StatusBar
+  StatusBar,
+  Alert
 } from "react-native";
 import Timer from "./src/Timer";
 import Controls from "./src/Controls";
+import Sound from "react-native-sound";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
+const ROUND_DURATION = 10;
 
 const SMALL_BLINDS = [
   25,
@@ -43,11 +39,58 @@ const SMALL_BLINDS = [
 export default class App extends Component {
   state = {
     currentLevel: 0,
-    minutes: 10,
+    minutes: ROUND_DURATION,
     seconds: 0,
     running: false,
     paused: false,
-    blink: false
+    blink: false,
+    alert: false
+  };
+
+  constructor() {
+    super();
+    Sound.setCategory("Playback");
+    this.bell = new Sound("bell.mp3", Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        console.log("failed to load the sound", error);
+        return;
+      }
+      // loaded successfully
+      console.log(
+        "duration in seconds: " +
+          this.bell.getDuration() +
+          "number of channels: " +
+          this.bell.getNumberOfChannels()
+      );
+    });
+  }
+
+  showAlert = () => {
+    Alert.alert(
+      `Round #${this.state.currentLevel + 1} finished`,
+      "",
+      [
+        {
+          text: "Next round",
+          onPress: this.handleOnForward
+        },
+        {
+          text: `Repeat round #${this.state.currentLevel + 1}`,
+          onPress: this.startTimer
+        }
+      ],
+      { cancelable: false }
+    );
+    this.bell.play(success => {
+      if (success) {
+        console.log("successfully finished playing");
+      } else {
+        console.log("playback failed due to audio decoding errors");
+        // reset the player to its uninitialized state (android only)
+        // this is the only option to recover after an error occured and use the player again
+        this.bell.reset();
+      }
+    });
   };
 
   startTimer = () => {
@@ -64,10 +107,19 @@ export default class App extends Component {
             seconds -= 1;
           }
           this.setState({ minutes, seconds });
+          if (minutes === 0 && seconds === 10) {
+            this.setState({ alert: true });
+          }
           if (seconds === 0 && minutes === 0) {
             clearInterval(this.timerInterval);
-            this.setState({ running: false });
-            console.log("done");
+            this.timerInterval = null;
+            this.setState({
+              running: false,
+              minutes: ROUND_DURATION,
+              seconds: 0,
+              alert: false
+            });
+            this.showAlert();
           }
         }
       }, 1000);
@@ -83,18 +135,35 @@ export default class App extends Component {
 
   handleOnForward = () => {
     if (this.state.currentLevel + 1 < SMALL_BLINDS.length) {
-      this.setState({ currentLevel: this.state.currentLevel + 1 });
+      this.setState({
+        currentLevel: this.state.currentLevel + 1,
+        minutes: ROUND_DURATION,
+        seconds: 0,
+        alert: false
+      });
     }
   };
 
   handleBackward = () => {
     if (this.state.currentLevel > 0) {
-      this.setState({ currentLevel: this.state.currentLevel - 1 });
+      this.setState({
+        currentLevel: this.state.currentLevel - 1,
+        minutes: ROUND_DURATION,
+        seconds: 0,
+        alert: false
+      });
     }
   };
 
   render() {
-    const { currentLevel, minutes, seconds, blink, running } = this.state;
+    const {
+      currentLevel,
+      minutes,
+      seconds,
+      blink,
+      running,
+      alert
+    } = this.state;
     const smallBlind = SMALL_BLINDS[currentLevel];
     const bigBlind = smallBlind * 2;
     const nextSmallBlind =
@@ -117,7 +186,12 @@ export default class App extends Component {
           {"\n"}
           {smallBlind}/{bigBlind}
         </Text>
-        <Timer minutes={minutes} seconds={seconds} blink={blink} />
+        <Timer
+          minutes={minutes}
+          seconds={seconds}
+          blink={blink}
+          alert={alert}
+        />
         <Controls
           onBackward={this.handleBackward}
           onForward={this.handleOnForward}

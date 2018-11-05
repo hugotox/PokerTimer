@@ -6,16 +6,23 @@ class Timer extends Component {
   static propTypes = {
     minutes: PropTypes.number.isRequired,
     seconds: PropTypes.number.isRequired,
-    blink: PropTypes.bool
+    blink: PropTypes.bool,
+    alert: PropTypes.bool
   };
 
   padZero = number => (number < 10 ? `0${number}` : number);
 
   render() {
-    const { minutes, seconds, blink } = this.props;
+    const { minutes, seconds, blink, alert } = this.props;
+    let extraStyle = null;
+    if (blink) {
+      extraStyle = styles.blinking;
+    } else if (alert) {
+      extraStyle = styles.alert;
+    }
     return (
       <View style={styles.container}>
-        <Text style={[styles.display, blink ? styles.blinking : null]}>
+        <Text style={[styles.display, extraStyle]}>
           {this.padZero(minutes)}:{this.padZero(seconds)}
         </Text>
       </View>
@@ -27,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center"
   },
-
   display: {
     fontFamily: "Digital-7 Mono",
     fontSize: 140,
@@ -36,6 +42,9 @@ const styles = StyleSheet.create({
   },
   blinking: {
     opacity: 0.8
+  },
+  alert: {
+    color: "#e74c3c"
   }
 });
 
