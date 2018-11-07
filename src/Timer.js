@@ -32,11 +32,17 @@ class Timer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#144623",
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 0,
+    borderRadius: 10
   },
   display: {
     fontFamily: "Digital-7 Mono",
-    fontSize: 140,
+    fontSize: 130,
     opacity: 1,
     color: "#f1c40f"
   },

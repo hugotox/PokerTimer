@@ -5,11 +5,16 @@ import {
   View,
   SafeAreaView,
   StatusBar,
-  Alert
+  Alert,
+  Dimensions,
+  TouchableOpacity
 } from "react-native";
 import Timer from "./src/Timer";
 import Controls from "./src/Controls";
 import Sound from "react-native-sound";
+import { intComma } from "./src/utils";
+import Icon from "react-native-vector-icons/FontAwesome";
+import SettingsModal from "./src/SettingsModal";
 
 const ROUND_DURATION = 10;
 
@@ -44,7 +49,8 @@ export default class App extends Component {
     running: false,
     paused: false,
     blink: false,
-    alert: false
+    alert: false,
+    modalVisible: false
   };
 
   constructor() {
@@ -155,6 +161,10 @@ export default class App extends Component {
     }
   };
 
+  toggleMenu = () => {
+    this.setState({ modalVisible: !this.state.modalVisible });
+  };
+
   render() {
     const {
       currentLevel,
@@ -174,17 +184,25 @@ export default class App extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Text style={styles.round}>
-          Round {currentLevel + 1}
-          {"\n"}
-          {nextSmallBlind
-            ? `Next Blinds: ${nextSmallBlind}/${nextBigBlind}`
-            : " "}
-        </Text>
+        <View>
+          <View style={styles.round}>
+            <Text style={styles.roundText}>Round {currentLevel + 1}</Text>
+            <TouchableOpacity onPress={this.toggleMenu} style={styles.menu}>
+              <Icon name="ellipsis-v" size={20} color={"#f1c40f"} />
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.nextBlinds}>
+            {nextSmallBlind
+              ? `Next Blinds: ${intComma(nextSmallBlind)}/${intComma(
+                  nextBigBlind
+                )}`
+              : " "}
+          </Text>
+        </View>
         <Text style={styles.blinds}>
           Blinds:
           {"\n"}
-          {smallBlind}/{bigBlind}
+          {intComma(smallBlind)}/{intComma(bigBlind)}
         </Text>
         <Timer
           minutes={minutes}
@@ -199,7 +217,10 @@ export default class App extends Component {
           startTimer={this.startTimer}
           running={running}
         />
-        <View />
+        <SettingsModal
+          onRequestClose={this.toggleMenu}
+          visible={this.state.modalVisible}
+        />
       </SafeAreaView>
     );
   }
@@ -211,14 +232,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#144623"
+    backgroundColor: "#175328"
   },
   round: {
-    color: "#bdc3c7",
-    fontSize: 22,
     marginBottom: 10,
-    textAlign: "center"
-    // height: 50
+    textAlign: "center",
+    backgroundColor: "#144623",
+    height: 50,
+    width: Dimensions.get("window").width,
+    paddingTop: 10,
+    position: "relative"
   },
   blinds: {
     color: "#f39c12",
@@ -229,6 +252,19 @@ const styles = StyleSheet.create({
   nextBlinds: {
     color: "#bdc3c7",
     fontSize: 25,
-    marginBottom: 4
+    marginBottom: 4,
+    textAlign: "center"
+  },
+  roundText: {
+    color: "#f1c40f",
+    fontSize: 22,
+    textAlign: "center"
+  },
+  menu: {
+    position: "absolute",
+    top: 15,
+    right: 10,
+    width: 20,
+    alignItems: "center"
   }
 });
