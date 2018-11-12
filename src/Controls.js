@@ -25,19 +25,19 @@ class Controls extends Component {
     return (
       <View style={styles.buttons}>
         <TouchableOpacity onPress={onBackward}>
-          <Icon name="step-backward" size={50} color={buttonColor} />
+          <Icon name="step-backward" size={20} color={buttonColor} />
         </TouchableOpacity>
         {running ? (
           <TouchableOpacity onPress={pauseTimer}>
-            <Icon name="pause" size={60} color={buttonColor} />
+            <Icon name="pause" size={25} color={buttonColor} />
           </TouchableOpacity>
         ) : (
           <TouchableOpacity onPress={startTimer}>
-            <Icon name="play" size={60} color={buttonColor} />
+            <Icon name="play" size={25} color={buttonColor} />
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={onForward}>
-          <Icon name="step-forward" size={50} color={buttonColor} />
+          <Icon name="step-forward" size={20} color={buttonColor} />
         </TouchableOpacity>
       </View>
     );

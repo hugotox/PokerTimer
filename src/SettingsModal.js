@@ -18,7 +18,11 @@ class SettingsModal extends Component {
 
   render() {
     return (
-      <Modal animationType="slide" visible={this.props.visible}>
+      <Modal
+        animationType="slide"
+        visible={this.props.visible}
+        onRequestClose={this.props.onRequestClose}
+      >
         <SafeAreaView style={styles.container}>
           <Text>Hola</Text>
           <TouchableOpacity onPress={this.props.onRequestClose}>

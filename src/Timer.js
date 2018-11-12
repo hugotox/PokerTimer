@@ -7,7 +7,8 @@ class Timer extends Component {
     minutes: PropTypes.number.isRequired,
     seconds: PropTypes.number.isRequired,
     blink: PropTypes.bool,
-    alert: PropTypes.bool
+    alert: PropTypes.bool,
+    reset: PropTypes.func
   };
 
   padZero = number => (number < 10 ? `0${number}` : number);
@@ -25,6 +26,9 @@ class Timer extends Component {
         <Text style={[styles.display, extraStyle]}>
           {this.padZero(minutes)}:{this.padZero(seconds)}
         </Text>
+        <TouchableOpacity onPress={this.props.reset} style={styles.reset}>
+          <Text style={styles.resetLabel}>Reset</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -33,24 +37,32 @@ class Timer extends Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#144623",
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 0,
-    borderRadius: 10
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    position: "relative"
   },
   display: {
     fontFamily: "Digital-7 Mono",
-    fontSize: 130,
+    fontSize: 100,
     opacity: 1,
     color: "#f1c40f"
   },
   blinking: {
-    opacity: 0.8
+    opacity: 0.5
   },
   alert: {
     color: "#e74c3c"
+  },
+  reset: {
+    position: "absolute",
+    bottom: 20,
+    color: "#f1c40f"
+  },
+  resetLabel: {
+    color: "#f1c40f"
   }
 });
 

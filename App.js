@@ -15,6 +15,7 @@ import Sound from "react-native-sound";
 import { intComma } from "./src/utils";
 import Icon from "react-native-vector-icons/FontAwesome";
 import SettingsModal from "./src/SettingsModal";
+import KeepAwake from "react-native-keep-awake";
 
 const ROUND_DURATION = 10;
 
@@ -69,6 +70,7 @@ export default class App extends Component {
           this.bell.getNumberOfChannels()
       );
     });
+    KeepAwake.activate();
   }
 
   showAlert = () => {
@@ -165,6 +167,14 @@ export default class App extends Component {
     this.setState({ modalVisible: !this.state.modalVisible });
   };
 
+  reset = () => {
+    this.setState({
+      minutes: ROUND_DURATION,
+      seconds: 0,
+      alert: false
+    });
+  };
+
   render() {
     const {
       currentLevel,
@@ -184,13 +194,25 @@ export default class App extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View>
-          <View style={styles.round}>
-            <Text style={styles.roundText}>Round {currentLevel + 1}</Text>
-            <TouchableOpacity onPress={this.toggleMenu} style={styles.menu}>
-              <Icon name="ellipsis-v" size={20} color={"#f1c40f"} />
-            </TouchableOpacity>
-          </View>
+        <View style={styles.round}>
+          <Text style={styles.roundText}>Round {currentLevel + 1}</Text>
+          <TouchableOpacity onPress={this.toggleMenu} style={styles.menu}>
+            <Icon name="ellipsis-v" size={20} color={"#f1c40f"} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.blinds}>
+            Blinds:
+            {"\n"}
+            {intComma(smallBlind)}/{intComma(bigBlind)}
+          </Text>
+          <Timer
+            minutes={minutes}
+            seconds={seconds}
+            blink={blink}
+            alert={alert}
+            reset={this.reset}
+          />
           <Text style={styles.nextBlinds}>
             {nextSmallBlind
               ? `Next Blinds: ${intComma(nextSmallBlind)}/${intComma(
@@ -198,25 +220,14 @@ export default class App extends Component {
                 )}`
               : " "}
           </Text>
+          <Controls
+            onBackward={this.handleBackward}
+            onForward={this.handleOnForward}
+            pauseTimer={this.pauseTimer}
+            startTimer={this.startTimer}
+            running={running}
+          />
         </View>
-        <Text style={styles.blinds}>
-          Blinds:
-          {"\n"}
-          {intComma(smallBlind)}/{intComma(bigBlind)}
-        </Text>
-        <Timer
-          minutes={minutes}
-          seconds={seconds}
-          blink={blink}
-          alert={alert}
-        />
-        <Controls
-          onBackward={this.handleBackward}
-          onForward={this.handleOnForward}
-          pauseTimer={this.pauseTimer}
-          startTimer={this.startTimer}
-          running={running}
-        />
         <SettingsModal
           onRequestClose={this.toggleMenu}
           visible={this.state.modalVisible}
@@ -226,18 +237,27 @@ export default class App extends Component {
   }
 }
 
+const green = "#175328";
+const darkGreen = "#144623";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#175328"
+    backgroundColor: darkGreen
+  },
+  content: {
+    backgroundColor: green,
+    width: Dimensions.get("window").width,
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "space-between"
   },
   round: {
-    marginBottom: 10,
     textAlign: "center",
-    backgroundColor: "#144623",
+    backgroundColor: darkGreen,
     height: 50,
     width: Dimensions.get("window").width,
     paddingTop: 10,
@@ -246,12 +266,14 @@ const styles = StyleSheet.create({
   blinds: {
     color: "#f39c12",
     fontWeight: "bold",
-    fontSize: 40,
-    textAlign: "center"
+    fontSize: 30,
+    textAlign: "center",
+    marginTop: 20
   },
   nextBlinds: {
+    marginTop: 20,
     color: "#bdc3c7",
-    fontSize: 25,
+    fontSize: 20,
     marginBottom: 4,
     textAlign: "center"
   },

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		008FE70AEC9B48ADB78BF835 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B1DB71907CB492BBF81751A /* FontAwesome5_Regular.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -45,6 +46,7 @@
 		4ACCE863EC24462793C75E3B /* Digital-7 Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14DABE66F8E54C718E3054A3 /* Digital-7 Mono.ttf */; };
 		4EE7BD6C7D054B5D9A0E36EB /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8EFBC308774DD09C215910 /* libRNVectorIcons.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		98AA3177483347B5BA597AF0 /* libKCKeepAwake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA181C8A3344CBC8C8A2C5C /* libKCKeepAwake.a */; };
 		9A41463F219004FB00A9D3BA /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A41463E219004FA00A9D3BA /* bell.mp3 */; };
 		9D9F154E714F4E999F73065B /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F405AFD9AD5941FC98BD3764 /* EvilIcons.ttf */; };
 		9EB4129B386B4511A654E595 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC90A3B6EAA44DD3A582C764 /* Feather.ttf */; };
@@ -348,6 +350,13 @@
 			remoteGlobalIDString = A39873CE1EA65EE60051E01A;
 			remoteInfo = "RNVectorIcons-tvOS";
 		};
+		9A42F3BB219954B500DBD914 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97468575433A44CA9C8EF6EE /* KCKeepAwake.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = KCKeepAwake;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -400,10 +409,12 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		83ABC2E24BBD4D8B8D2177C7 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		86E103AC75BF42B681931513 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
+		97468575433A44CA9C8EF6EE /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		975B726F3928415F805653AF /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		9A41463E219004FA00A9D3BA /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
 		9D01FAC380384ABFA3F750F4 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		AEA181C8A3344CBC8C8A2C5C /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
 		DC90A3B6EAA44DD3A582C764 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		F405AFD9AD5941FC98BD3764 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		F4FC0D738C294850899B2146 /* Digital-7.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Digital-7.ttf"; path = "../assets/fonts/Digital-7.ttf"; sourceTree = "<group>"; };
@@ -436,6 +447,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				4EE7BD6C7D054B5D9A0E36EB /* libRNVectorIcons.a in Frameworks */,
 				1C0ED994218646AABF9E480E /* libRNSound.a in Frameworks */,
+				98AA3177483347B5BA597AF0 /* libKCKeepAwake.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +637,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				46B612F9B527409C9BCF9C55 /* RNVectorIcons.xcodeproj */,
 				15CD83482A6A445B9D29F89F /* RNSound.xcodeproj */,
+				97468575433A44CA9C8EF6EE /* KCKeepAwake.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -672,6 +685,7 @@
 				1B8EFBC308774DD09C215910 /* libRNVectorIcons.a */,
 				29EA68E7C46240D9BECD2C1C /* libRNSound.a */,
 				86E103AC75BF42B681931513 /* libRNVectorIcons-tvOS.a */,
+				AEA181C8A3344CBC8C8A2C5C /* libKCKeepAwake.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -689,6 +703,14 @@
 			children = (
 				9A41463B219004CD00A9D3BA /* libRNVectorIcons.a */,
 				9A41463D219004CD00A9D3BA /* libRNVectorIcons-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A42F3B8219954B300DBD914 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A42F3BC219954B500DBD914 /* libKCKeepAwake.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -837,6 +859,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9A42F3B8219954B300DBD914 /* Products */;
+					ProjectRef = 97468575433A44CA9C8EF6EE /* KCKeepAwake.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -1178,6 +1204,13 @@
 			remoteRef = 9A41463C219004CD00A9D3BA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9A42F3BC219954B500DBD914 /* libKCKeepAwake.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKCKeepAwake.a;
+			remoteRef = 9A42F3BB219954B500DBD914 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1345,12 +1378,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = PokerTimerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1374,12 +1409,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = PokerTimerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1404,6 +1441,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = PokerTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1427,6 +1465,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = PokerTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1457,11 +1496,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = "PokerTimer-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1494,11 +1535,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = "PokerTimer-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1530,11 +1573,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = "PokerTimer-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1566,11 +1611,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+					"$(SRCROOT)/../node_modules/react-native-keep-awake/ios",
 				);
 				INFOPLIST_FILE = "PokerTimer-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
