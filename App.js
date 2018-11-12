@@ -17,8 +17,6 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import SettingsModal from "./src/SettingsModal";
 import KeepAwake from "react-native-keep-awake";
 
-const ROUND_DURATION = 10;
-
 const SMALL_BLINDS = [
   25,
   50,
@@ -44,8 +42,9 @@ const SMALL_BLINDS = [
 
 export default class App extends Component {
   state = {
+    roundDuration: 10,
     currentLevel: 0,
-    minutes: ROUND_DURATION,
+    minutes: 10,
     seconds: 0,
     running: false,
     paused: false,
@@ -72,6 +71,13 @@ export default class App extends Component {
     });
     KeepAwake.activate();
   }
+
+  handleSave = settings => {
+    this.setState(
+      { roundDuration: parseFloat(settings.roundDuration) },
+      this.reset
+    );
+  };
 
   showAlert = () => {
     Alert.alert(
@@ -123,7 +129,7 @@ export default class App extends Component {
             this.timerInterval = null;
             this.setState({
               running: false,
-              minutes: ROUND_DURATION,
+              minutes: this.state.roundDuration,
               seconds: 0,
               alert: false
             });
@@ -145,7 +151,7 @@ export default class App extends Component {
     if (this.state.currentLevel + 1 < SMALL_BLINDS.length) {
       this.setState({
         currentLevel: this.state.currentLevel + 1,
-        minutes: ROUND_DURATION,
+        minutes: this.state.roundDuration,
         seconds: 0,
         alert: false
       });
@@ -156,7 +162,7 @@ export default class App extends Component {
     if (this.state.currentLevel > 0) {
       this.setState({
         currentLevel: this.state.currentLevel - 1,
-        minutes: ROUND_DURATION,
+        minutes: this.state.roundDuration,
         seconds: 0,
         alert: false
       });
@@ -169,7 +175,7 @@ export default class App extends Component {
 
   reset = () => {
     this.setState({
-      minutes: ROUND_DURATION,
+      minutes: this.state.roundDuration,
       seconds: 0,
       alert: false
     });
@@ -230,7 +236,9 @@ export default class App extends Component {
         </View>
         <SettingsModal
           onRequestClose={this.toggleMenu}
+          onSave={this.handleSave}
           visible={this.state.modalVisible}
+          roundDuration={this.state.roundDuration}
         />
       </SafeAreaView>
     );

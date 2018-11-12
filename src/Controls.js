@@ -24,19 +24,19 @@ class Controls extends Component {
     } = this.props;
     return (
       <View style={styles.buttons}>
-        <TouchableOpacity onPress={onBackward}>
+        <TouchableOpacity onPress={onBackward} style={styles.button}>
           <Icon name="step-backward" size={20} color={buttonColor} />
         </TouchableOpacity>
         {running ? (
-          <TouchableOpacity onPress={pauseTimer}>
+          <TouchableOpacity onPress={pauseTimer} style={styles.button}>
             <Icon name="pause" size={25} color={buttonColor} />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity onPress={startTimer}>
+          <TouchableOpacity onPress={startTimer} style={styles.button}>
             <Icon name="play" size={25} color={buttonColor} />
           </TouchableOpacity>
         )}
-        <TouchableOpacity onPress={onForward}>
+        <TouchableOpacity onPress={onForward} style={styles.button}>
           <Icon name="step-forward" size={20} color={buttonColor} />
         </TouchableOpacity>
       </View>
@@ -51,6 +51,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     marginBottom: 20
+  },
+  button: {
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10
   }
 });
 
